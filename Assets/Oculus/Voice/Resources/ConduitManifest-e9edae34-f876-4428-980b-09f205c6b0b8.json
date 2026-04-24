@@ -1,0 +1,1 @@
+{"Version": "0.1", "ID": "1977092253016799", "Actions": [{"Name": "ask_hint", "Parameters": [], "ID": "HintVoiceController.OnHintRequested", "Aliases": [], "Assembly": "Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"}], "ErrorHandlers": [], "Entities": [], "Domain": "escape_room_voice"}
