@@ -1,21 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Lock : MonoBehaviour
 {
-
     public int LockID;
+    public UnityEvent onUnlocked;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnDisable()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        onUnlocked.Invoke();
     }
 }
