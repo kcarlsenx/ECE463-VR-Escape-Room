@@ -5,9 +5,10 @@ using UnityEngine.Events;
 
 public class Lock : MonoBehaviour
 {
-    public int LockID;
-    public UnityEvent onUnlocked;
+    public int LockID; // ID value that associates with key ID
+    public UnityEvent onUnlocked; // Unlock event trigger
 
+    // Trigger when lock is opened
     private void OnDisable()
     {
         onUnlocked.Invoke();

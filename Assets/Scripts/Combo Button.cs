@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    public int buttonValue;
+    public int buttonValue; // The buttons input number
 }
 

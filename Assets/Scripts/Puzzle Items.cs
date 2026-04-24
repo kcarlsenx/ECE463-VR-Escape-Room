@@ -2,21 +2,14 @@ using UnityEngine;
 
 public class PuzzleItem : MonoBehaviour
 {
-    private Vector3 startPos;
-    private Quaternion startRot;
-    private Vector3 startScale;
 
-    private Renderer rend;
+    private Renderer rend; // Use to set material
+    public Material normalMaterial; // Default material
+    public Material highlightMaterial; // Highlight material
 
-    public Material normalMaterial;
-    public Material highlightMaterial;
-
+    // Set default state of object
     void Awake()
     {
-        startPos = transform.localPosition;
-        startRot = transform.localRotation;
-        startScale = transform.localScale;
-
         rend = GetComponentInChildren<Renderer>();
 
         // Ensure we start with normal material
@@ -26,20 +19,7 @@ public class PuzzleItem : MonoBehaviour
         }
     }
 
-    public void ResetItem()
-    {
-        transform.localPosition = startPos;
-        transform.localRotation = startRot;
-        transform.localScale = startScale;
-
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-    }
-
+    // Change object to highlight state
     public void SetHighlight(bool on)
     {
         if (rend == null) return;
@@ -54,11 +34,13 @@ public class PuzzleItem : MonoBehaviour
         }
     }
 
+    // Triggered when object is pointed at
     public void OnHoverEnter()
     {
         SetHighlight(true);
     }
 
+    // Triggered when objected is no longer pointed at
     public void OnHoverExit()
     {
         SetHighlight(false);

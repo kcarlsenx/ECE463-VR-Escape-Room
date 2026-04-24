@@ -8,21 +8,10 @@ using UnityEngine.UIElements;
 
 public class Key : MonoBehaviour
 {
-    public int KeyID;
+    public int KeyID; // ID value that associates with lock ID
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Checks if key touches a lock and IDs match
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Lock>(out Lock currLock) && KeyID == currLock.LockID)
@@ -32,6 +21,7 @@ public class Key : MonoBehaviour
         }
     }
 
+    // Animation for lock unlocking
     private IEnumerator UnlockEffect(GameObject currLock)
     {
 

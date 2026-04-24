@@ -6,13 +6,11 @@ using TMPro;
 public class PasscodeSystem : MonoBehaviour
 {
 
-    public List<int> correctCode = new List<int> { 1, 2, 3, 4 };
-
-    private List<int> currentInput = new List<int>();
-
-    public UnityEvent onSuccess;
-    public UnityEvent onFailure;
-    public TMP_Text displayText;
+    public List<int> correctCode = new List<int> { 1, 2, 3, 4 }; // Lock password
+    private List<int> currentInput = new List<int>(); // Curent inputed password
+    public UnityEvent onSuccess; // Event when code is correct
+    public UnityEvent onFailure; // Event when code is wrong
+    public TMP_Text displayText; // Text for code interface
 
     // Call this when a number button is pressed
     public void EnterDigit(int digit)
@@ -28,13 +26,14 @@ public class PasscodeSystem : MonoBehaviour
         }
     }
 
-private void UpdateDisplay()
+    // Updates text with user input
+    private void UpdateDisplay()
     {
 
-            displayText.text = string.Join("", currentInput);
+        displayText.text = string.Join("", currentInput);
     }
 
-
+    // Checks is password was correct and calls event
     private void CheckCode()
     {
         bool isCorrect = true;
@@ -63,7 +62,7 @@ private void UpdateDisplay()
         currentInput.Clear();
     }
 
-    // Reset code (will be used later)
+    // Reset code for debugging
     public void ResetInput()
     {
         currentInput.Clear();
