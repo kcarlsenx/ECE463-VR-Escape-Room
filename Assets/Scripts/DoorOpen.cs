@@ -10,11 +10,18 @@ public class DoorOpen : MonoBehaviour
     private Quaternion startRot; // Closed door angle
     private Quaternion targetRot; // Open door angle
 
+    public AudioSource doorAudio;
+    public AudioClip doorMoveClip;
+    private bool soundPlayed = false;
+
     // Calculate door posistion
     void Start()
     {
         startRot = transform.rotation;
         targetRot = startRot * Quaternion.Euler(0f, 0f, openAngle);
+
+        if (doorAudio == null)
+            doorAudio = GetComponent<AudioSource>();
     }
 
     // Open the door when unlocked
@@ -22,6 +29,13 @@ public class DoorOpen : MonoBehaviour
     {
         if (elapsed < duration && unlocked)
         {
+
+            if (!soundPlayed)
+            {
+                PlayDoorSound();
+                soundPlayed = true;
+            }
+
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
 
@@ -33,5 +47,14 @@ public class DoorOpen : MonoBehaviour
     public void unlockDoor()
     {
         unlocked = true;
+    }
+
+    private void PlayDoorSound()
+    {
+        if (doorAudio != null && doorMoveClip != null)
+        {
+            doorAudio.pitch = Random.Range(0.9f, 1.1f);
+            doorAudio.PlayOneShot(doorMoveClip);
+        }
     }
 }
