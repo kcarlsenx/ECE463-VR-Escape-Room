@@ -21,10 +21,22 @@ public class StoveKnob : MonoBehaviour
         {
             clickSound.Play();
         }
-        stoveManager.OnKnobTurned();
+        if (stoveManager != null)
+        {
+            stoveManager.OnKnobTurned();
+        }
+        else
+        {
+            Debug.LogError("StoveManager missing on " + gameObject.name);
+        }
     }
 
     private void OnMouseDown() // for testing in unity
+    {
+        OnInteract();
+    }
+
+    public void OnSelect()
     {
         OnInteract();
     }
