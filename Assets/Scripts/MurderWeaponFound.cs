@@ -7,7 +7,6 @@ public class MurderWeaponFound : MonoBehaviour
 {
     public float delayBeforeSceneChange = 3f;
     public string endingSceneName = "EndingScene";
-
     private bool found = false;
 
     public void FoundWeapon()

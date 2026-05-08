@@ -11,6 +11,8 @@ public class StoveManager : MonoBehaviour
 
     public Animator broilerAnimator;
     public GameObject murderWeapon;
+    public AudioSource suspenseAudio;
+    public AudioClip suspenseClip;
 
     private bool solved = false;
 
@@ -22,6 +24,7 @@ public class StoveManager : MonoBehaviour
 
     private void CheckSolution()
     {
+
         if (solved) return;
 
         for (int i = 0; i < solution.Length; i++)
@@ -40,7 +43,10 @@ public class StoveManager : MonoBehaviour
 
         if (murderWeapon != null)
             murderWeapon.SetActive(true);
+
+        playSuspenseSound();
     }
+
 
     private void UpdateBurners()
     {
@@ -56,4 +62,13 @@ public class StoveManager : MonoBehaviour
         if (burnerEffects.Length > 3 && burnerEffects[3] != null)
             burnerEffects[3].SetBurnerState(knobs[3].currentState);
     }
+
+    private void playSuspenseSound()
+    {
+        if (suspenseAudio != null && suspenseClip != null)
+        {
+            suspenseAudio.PlayOneShot(suspenseClip);
+        }
+    }
+
 }
