@@ -11,7 +11,7 @@ public class HintSystem : MonoBehaviour
     [TextArea(2, 5)]
     [SerializeField] private string[] hints;
 
-    private int currentHintIndex = 0;
+    private int currentPuzzle = 0;
 
     // Start is called before the first frame update
     private void Start()
@@ -34,11 +34,17 @@ public class HintSystem : MonoBehaviour
             hintBox.SetActive(true);
 
         if (hintText != null)
-            hintText.text = hints[Mathf.Min(currentHintIndex, hints.Length - 1)];
+            hintText.text = hints[currentPuzzle];
 
-        if (currentHintIndex < hints.Length - 1)
-            currentHintIndex++;
     }
+
+    public void finishPuzzle()
+    {
+        currentPuzzle++;
+        Debug.Log("Finished puzzle: " + currentPuzzle);
+        hintText.text = "Hints";
+    }
+
 
     public void HideHintBox()
     {

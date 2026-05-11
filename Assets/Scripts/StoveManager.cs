@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StoveManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class StoveManager : MonoBehaviour
     public GameObject murderWeapon;
     public AudioSource suspenseAudio;
     public AudioClip suspenseClip;
+    public UnityEvent puzzleFinished;
 
     private bool solved = false;
 
@@ -44,6 +46,7 @@ public class StoveManager : MonoBehaviour
         if (murderWeapon != null)
             murderWeapon.SetActive(true);
 
+        puzzleFinished.Invoke();
         playSuspenseSound();
     }
 

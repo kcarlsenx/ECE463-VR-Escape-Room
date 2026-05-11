@@ -7,32 +7,17 @@ public class StartGame : MonoBehaviour
 {
     public float delayBeforeSceneChange = 3f;
     public string gameSceneName = "House";
- 
-    private AsyncOperation loadOperation;
-
-    private void Start()
-    {
-        loadOperation =
-            SceneManager.LoadSceneAsync(
-                gameSceneName,
-                LoadSceneMode.Single
-            );
-
-        loadOperation.allowSceneActivation = false;
-    }
+    public GameObject credits;
+    public GameObject loadText;
 
  
     public void startGame()
     {
-        StartCoroutine(LoadEndingAfterDelay());
+        credits.SetActive(false);
+        loadText.SetActive(true);
+
+        SceneManager.LoadScene(gameSceneName);
     }
-
-
-     private IEnumerator LoadEndingAfterDelay()
-    {
-        yield return new WaitForSeconds(delayBeforeSceneChange);
-         loadOperation.allowSceneActivation = true;
-    } 
 
 
 }
