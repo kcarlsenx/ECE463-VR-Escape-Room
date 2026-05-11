@@ -16,15 +16,31 @@ public class AlchemyCandleTrigger : MonoBehaviour
     public AudioClip extinguishClip;
 
     private void OnTriggerEnter(Collider other)
+{
+    Debug.Log("Triggered by: " + other.name);
+
+    if (basementManager == null)
     {
-        if (basementManager == null || !basementManager.bookPuzzleSolved)
-            return;
-
-        if (!other.CompareTag("Candle"))
-            return;
-
-        TurnOn();
+        Debug.Log("Basement manager is NULL");
+        return;
     }
+
+    Debug.Log("bookPuzzleSolved = " + basementManager.bookPuzzleSolved);
+
+    Debug.Log("Tag = " + other.tag);
+
+    if (!basementManager.bookPuzzleSolved)
+        return;
+
+    if (!other.CompareTag("Candle"))
+    {
+        Debug.Log("Wrong tag");
+        return;
+    }
+
+    Debug.Log("TURNING ON");
+    TurnOn();
+}
 
     public void TurnOn()
     {
