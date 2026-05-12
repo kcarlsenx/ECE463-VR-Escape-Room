@@ -7,6 +7,7 @@ public class PlacementPuzzle : MonoBehaviour
 {
     public List<bool> currentPuzzleState = new List<bool> { false, false, false, false }; // current correct placements
     public UnityEvent puzzleSolved;
+    public bool isSolved = false;
 
     public void updateCorrect(int currPlacement)
     {
@@ -22,6 +23,11 @@ public class PlacementPuzzle : MonoBehaviour
 
     private void checkComplete()
     {
+        if (isSolved)
+        {
+            return;
+        }
+
     // Check every puzzle state entry
     foreach (bool state in currentPuzzleState)
     {
@@ -33,6 +39,7 @@ public class PlacementPuzzle : MonoBehaviour
 
     Debug.Log("Puzzle Solved!");
 
+    isSolved = true;
     puzzleSolved.Invoke();
     }
 
