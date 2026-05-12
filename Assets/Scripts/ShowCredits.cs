@@ -6,12 +6,14 @@ public class ShowCredits : MonoBehaviour
 {
     public GameObject credits;
     private bool isCredits = false;
+    public GameObject title;
 
     void Start()
     {
         if (credits != null)
         {
             credits.SetActive(false);
+            title.SetActive(true);
             
         }
     }
@@ -21,6 +23,7 @@ public class ShowCredits : MonoBehaviour
     {
         if (credits != null && isCredits == false)
         {
+            title.SetActive(false);
             credits.SetActive(true);
             isCredits = true;
         }
@@ -28,6 +31,7 @@ public class ShowCredits : MonoBehaviour
         {
             credits.SetActive(false);
             isCredits = false;
+            title.SetActive(true);
         }
     }
 }

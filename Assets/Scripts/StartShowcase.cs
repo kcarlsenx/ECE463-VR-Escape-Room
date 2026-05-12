@@ -9,6 +9,7 @@ public class StartShowcase : MonoBehaviour
     public string gameSceneName = "showcase";
     public GameObject credits;
     public GameObject loadText;
+    public GameObject title;
  
     private AsyncOperation loadOperation;
 
@@ -26,6 +27,7 @@ public class StartShowcase : MonoBehaviour
  
     public void startShowcase()
     {
+        title.SetActive(false);
         credits.SetActive(false);
         loadText.SetActive(true);
         StartCoroutine(LoadEndingAfterDelay());
